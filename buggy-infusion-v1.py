@@ -18,7 +18,7 @@ def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time
 
     # Objective: Minimize total weighted deferring time and makespan
     deferring_time_weight = 1
-    makespan_weight = 1
+    makespan_weight = 100
 
     prob += (
         deferring_time_weight * pulp.lpSum(
@@ -34,19 +34,19 @@ def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time
 
     for t in time_slots:
         prob += pulp.lpSum([x[p['patientId'], t] for p in patients for t_prime in
-                            range(max(open_time, t + p['length']), t + 2, 10)]) <= num_stations + 5
+                            range(max(open_time, t - p['length']), t + 1, 10)]) <= num_stations
 
         prob += (
             pulp.lpSum([x[p['patientId'], t_prime] for p in patients for t_prime in
-                        range(max(open_time, t - p['length']), t + 1, 10)]) * (1 / (M + 1)) +
-            pulp.lpSum([x[p['patientId'], t] for p in patients]) * (1 - (1 / (M + 1))) +
+                        range(max(open_time, t - p['length']), t + 1, 10)]) * (1 / M) +
+            pulp.lpSum([x[p['patientId'], t] for p in patients]) * (1 - (1 / M)) +
             pulp.lpSum([x[p['patientId'], t - p['length']] for p in patients if t - p['length'] in time_slots]) * (
-                1 - (1 / (M + 1)))
+                1 - (1 / M))
             <= num_nurses + 2
         )
 
     for p in patients:
-        prob += pulp.lpSum([x[p['patientId'], t] for t in time_slots]) == 1
+        prob += pulp.lpSum([x[p['patientId'], t] for t in time_slots]) == 0
         prob += pulp.lpSum([x[p['patientId'], t] for t in range(open_time, p['readyTime'], 10)]) == 0
     # Solve the problem
     prob.solve(pulp.PULP_CBC_CMD(timeLimit=60))
@@ -62,7 +62,7 @@ def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time
                            nurses_mongo}  # Tracks end times of patients assigned to each nurse
 
         # Initialize direction and nurse index variables
-        forward_direction = False
+        forward_direction = True
         nurse_index = 3
         num_nurses = len(nurses_mongo)
 
@@ -76,35 +76,22 @@ def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time
 
                     # Assign nurses in a zigzag (round-robin) fashion
                     if forward_direction:
+                        nurse_index += 2  # Skip nurses every second time
+                        if nurse_index >= num_nurses:  # Wrap around the nurse index
+                            nurse_index = nurse_index % num_nurses
                         nurse = nurses_mongo[nurse_index]
                         nurse_id = nurse['nurseId']
-
-                        nurse_capacities[nurse_id] += 1
-                        nurse_end_times[nurse_id].append(t + p['length'])
-                        allocation.append((p['patientId'], t, t + p['length'], chair_id, nurse_id))
-
-                        # Move to the next nurse
-                        nurse_index += 1
-                        if nurse_index == num_nurses:
-                            # Reverse the direction after reaching the last nurse
-                            nurse_index -= 1
-                            forward_direction = False
-
                     else:
+                        nurse_index -= 2  # Go backward, skipping nurses
+                        if nurse_index < 0:  # Wrap around the nurse index
+                            nurse_index = num_nurses - 1
                         nurse = nurses_mongo[nurse_index]
                         nurse_id = nurse['nurseId']
 
-                        nurse_capacities[nurse_id] += 1
-                        nurse_end_times[nurse_id].append(t + p['length'])
-                        allocation.append((p['patientId'], t, t + p['length'], chair_id, nurse_id))
-
-                        # Move to the previous nurse
-                        nurse_index -= 1
-                        if nurse_index < 0:
-                            # Reverse the direction after reaching the first nurse
-                            nurse_index = 0
-                            forward_direction = True
-
+                    # Assign to this randomly chosen nurse, regardless of their capacity
+                    nurse_capacities[nurse_id] += 1
+                    nurse_end_times[nurse_id].append(t + p['length'])
+                    allocation.append((p['patientId'], t, t + p['length'], chair_id, nurse_id))
             # Nurse capacities remain overloaded
 
         return allocation
