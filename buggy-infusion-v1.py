@@ -198,7 +198,7 @@ def schedule_patients_no_constraint(patients, num_stations, num_nurses, open_tim
         return None
 
 def calculate_roi_metrics(allocation, patients, nurses, open_time, close_time, break_start_time, break_end_time,
-                          break_duration, distance_matrix):
+                          break_duration):
     num_nurses = len(nurses)
     overtime_per_nurse = []
     patient_wait_times = []
@@ -250,16 +250,6 @@ def calculate_roi_metrics(allocation, patients, nurses, open_time, close_time, b
     metrics = {
         'avgOvertimePerNurse': avg_overtime_per_nurse,
         'avgPatientWaitTime': avg_patient_wait_time,
-        'avgNursesWithLunchBreak': avg_nurses_with_lunch_break,
-        'avgNursesWithoutOvertime': nurses_without_overtime / num_nurses if num_nurses > 0 else 0,
-        'NumberOfOntimeCloses': ontime_closes,
-        'ChairPreferenceMismatches': chair_mismatch_count,
-        'IneligibleNursesCount': ineligible_nurses_count,
-        'OverallAverageChairDistance': overall_avg_distance,
-        'avgAcuityPerNurse': avg_acuity_per_nurse,
-        'varianceAcuityPerNurse': variance_acuity_per_nurse,
-        'overallAvgAcuityPerNurseAtAnyTime': avg_acuity_per_nurse,
-        'overallVarianceAcuityPerNurseAtAnyTime': variance_acuity_per_nurse,
     }
 
     return metrics
@@ -271,7 +261,7 @@ num_nurses, num_chairs, M, open_time, close_time, patients, nurses, break_start_
 
 naive_allocation = generate_naive_allocation(patients, nurses, num_chairs, open_time, close_time)
 
-distance_matrix = floyd_warshall(chairs)
+# distance_matrix = floyd_warshall(chairs)
 
 # Generate the Excel file
 # file_path = 'patient_schedule.csv'
@@ -305,15 +295,14 @@ for alloc in allocation:
 print("ROI FROM OPTIMIZED SCHEDULE")
 optimized_roi = calculate_roi_metrics(
     allocation, patients, nurses, open_time, close_time, break_start_time,
-    break_end_time, break_duration, distance_matrix
-)
+    break_end_time, break_duration)
 
 print(optimized_roi)
 
 print("ROI FROM NAIVE SCHEDULE")
 unoptimized_roi = calculate_roi_metrics(
     naive_allocation, patients, nurses, open_time, close_time, break_start_time,
-    break_end_time, break_duration, distance_matrix
+    break_end_time, break_duration
 )
 
 print(unoptimized_roi)

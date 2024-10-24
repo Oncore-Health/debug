@@ -245,7 +245,8 @@ def generate_realistic_data():
     close_time = settings_data['closeTime']
     break_start_time = settings_data['break_start_time']
     break_end_time = settings_data['break_end_time']
-    nurses_mongo = settings_data['nurses']
+    # nurses_mongo = settings_data['nurses']
+    nurses_mongo = settings_data['nurses'][:16]
     break_duration = settings_data['break_duration']
 
     types = ["add-on", "cancelled", "no-show", "N/A"]
