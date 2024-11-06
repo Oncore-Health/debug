@@ -3,8 +3,7 @@ import pulp
 # from graphics_matplotlib import *
 from settings import *
 
-def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time, close_time, M, break_start_time,
-                                   break_end_time, break_duration, nurses_mongo):
+def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time, close_time, M, nurses_mongo):
     # Define the problem
     prob = pulp.LpProblem("InfusionCenterSchedulingWithErrors", pulp.LpMaximize)
 
@@ -97,13 +96,10 @@ def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time
         return None
 
 
-def calculate_roi_metrics(allocation, patients, nurses, open_time, close_time, break_start_time, break_end_time,
-                          break_duration):
+def calculate_roi_metrics(allocation, patients, nurses, open_time, close_time):
     num_nurses = len(nurses)
     overtime_per_nurse = []
     patient_wait_times = []
-
-    chairs = settings_data['chairs']
 
     for n in nurses:
         scheduled_start = n['startTime']
@@ -112,9 +108,6 @@ def calculate_roi_metrics(allocation, patients, nurses, open_time, close_time, b
         total_overtime = max(0, scheduled_end - scheduled_start - 480)
 
         overtime_per_nurse.append(total_overtime)
-
-        if total_overtime == 0:
-            nurses_without_overtime += 1
 
     avg_overtime_per_nurse = np.mean(overtime_per_nurse) if overtime_per_nurse else 0
 
@@ -138,25 +131,9 @@ num_nurses, num_chairs, M, open_time, close_time, patients, nurses, break_start_
 
 naive_allocation = generate_naive_allocation(patients, nurses, num_chairs, open_time, close_time)
 
-# distance_matrix = floyd_warshall(chairs)
-
-# Generate the Excel file
-# file_path = 'patient_schedule.csv'
-# generate_patient_excel(patients, file_path)
-
-# plot_timeline(naive_allocation, open_time, close_time)
-# plot_utilization(naive_allocation, open_time, close_time, num_chairs)
-
 allocation = schedule_patients_no_set_lunch(
-    patients, num_chairs, num_nurses, open_time, close_time, M,
-    break_start_time, break_end_time, break_duration, nurses
+    patients, num_chairs, num_nurses, open_time, close_time, M, nurses
 )
-
-if allocation is None:
-    allocation = schedule_patients_no_constraint(
-        patients, num_chairs, num_nurses, open_time, close_time, M,
-        break_start_time, break_end_time, break_duration
-    )
 
 for alloc in allocation:
     print(f"Patient {alloc[0]} starts at {alloc[1]} and ends at {alloc[2]} in chair {alloc[3]} with nurse {alloc[4]}")
@@ -171,15 +148,13 @@ for alloc in allocation:
 
 print("ROI FROM OPTIMIZED SCHEDULE")
 optimized_roi = calculate_roi_metrics(
-    allocation, patients, nurses, open_time, close_time, break_start_time,
-    break_end_time, break_duration)
+    allocation, patients, nurses, open_time, close_time)
 
 print(optimized_roi)
 
 print("ROI FROM NAIVE SCHEDULE")
 unoptimized_roi = calculate_roi_metrics(
-    naive_allocation, patients, nurses, open_time, close_time, break_start_time,
-    break_end_time, break_duration
+    naive_allocation, patients, nurses, open_time, close_time
 )
 
 print(unoptimized_roi)
