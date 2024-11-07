@@ -15,7 +15,7 @@ def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time
 
     # Objective: Minimize total weighted deferring time and makespan
     deferring_time_weight = 1
-    makespan_weight = 100
+    makespan_weight = 1
 
     prob += (
         deferring_time_weight * pulp.lpSum(
@@ -27,7 +27,10 @@ def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time
     )
 
     # Constraints
-    
+
+    for p in patients:
+        prob += pulp.lpSum([x[p['patientId'], t] for t in time_slots]) == 0
+        prob += pulp.lpSum([x[p['patientId'], t] for t in range(open_time, p['readyTime'], 10)]) == 0 
 
     for t in time_slots:
         prob += pulp.lpSum([x[p['patientId'], t] for p in patients for t_prime in
@@ -42,9 +45,6 @@ def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time
             <= num_nurses + 2
         )
 
-    for p in patients:
-        prob += pulp.lpSum([x[p['patientId'], t] for t in time_slots]) == 0
-        prob += pulp.lpSum([x[p['patientId'], t] for t in range(open_time, p['readyTime'], 10)]) == 0
     # Solve the problem
     prob.solve(pulp.PULP_CBC_CMD(timeLimit=60))
 
@@ -96,11 +96,12 @@ def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time
         return None
 
 
-def calculate_roi_metrics(allocation, patients, nurses, open_time, close_time):
-    num_nurses = len(nurses)
+def calculate_roi_metrics(allocation, patients, nurses):
+    # hint : we have to use allocation as that is the scheduling done by the algorithm
     overtime_per_nurse = []
     patient_wait_times = []
 
+    # right now we are just seeing how long the shift is of a nurse
     for n in nurses:
         scheduled_start = n['startTime']
         scheduled_end = n['endTime']
@@ -111,6 +112,7 @@ def calculate_roi_metrics(allocation, patients, nurses, open_time, close_time):
 
     avg_overtime_per_nurse = np.mean(overtime_per_nurse) if overtime_per_nurse else 0
 
+    # right now we are randomly giving wait time per patient and not calculating
     for p in patients:
         wait_time = random.randint(-30, 60) 
         patient_wait_times.append(wait_time)
@@ -148,13 +150,13 @@ for alloc in allocation:
 
 print("ROI FROM OPTIMIZED SCHEDULE")
 optimized_roi = calculate_roi_metrics(
-    allocation, patients, nurses, open_time, close_time)
+    allocation, patients, nurses)
 
 print(optimized_roi)
 
 print("ROI FROM NAIVE SCHEDULE")
 unoptimized_roi = calculate_roi_metrics(
-    naive_allocation, patients, nurses, open_time, close_time
+    naive_allocation, patients, nurses
 )
 
 print(unoptimized_roi)

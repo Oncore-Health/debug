@@ -11,12 +11,10 @@ def connect_to_mongo(uri):
     client = MongoClient(uri, tlsAllowInvalidCertificates=True)
     return client
 
-# uri = "mongodb+srv://MainLine:TheBigNurse@scheduleevents.xourcma.mongodb.net/"
-uri = "mongodb+srv://CHLA-access:ShubhamLovesNursingAndOncore123456789@chla-cluster.hwn5e.mongodb.net/"
+uri = "mongodb+srv://test:test@testcluster.jzglo.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"
 excel_name = 'IC_Scheduling_Guidelines_And_Start_Times_6-6-2024.xlsx'
 
-# db_name = 'Paoli'
-db_name = 'CHLA-dev'
+db_name = 'test'
 # Connect to MongoDB and update the schedule
 client = connect_to_mongo(uri)
 db = client[db_name]
