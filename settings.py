@@ -11,10 +11,10 @@ def connect_to_mongo(uri):
     client = MongoClient(uri, tlsAllowInvalidCertificates=True)
     return client
 
-uri = "mongodb+srv://test:test@testcluster.jzglo.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"
+uri = "mongodb+srv://test:gytc2elpQxENixcU@testcluster.jzglo.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"
 excel_name = 'IC_Scheduling_Guidelines_And_Start_Times_6-6-2024.xlsx'
 
-db_name = 'test'
+db_name = 'test-dev'
 # Connect to MongoDB and update the schedule
 client = connect_to_mongo(uri)
 db = client[db_name]
@@ -243,16 +243,14 @@ def generate_realistic_data():
     close_time = settings_data['closeTime']
     break_start_time = settings_data['break_start_time']
     break_end_time = settings_data['break_end_time']
-    # nurses_mongo = settings_data['nurses']
-    nurses_mongo = settings_data['nurses'][:16]
+    nurses_mongo = list(settings_data['nurses'].values())[:16]
     break_duration = settings_data['break_duration']
-
     types = ["add-on", "cancelled", "no-show", "N/A"]
     probabilities = [0.08, 0.08, 0.08, 0.76]
 
     # Convert time string to a datetime object
-    open_time_obj = datetime.strptime(open_time[0], "%H:%M")
-    close_time_obj = datetime.strptime(close_time[0], "%H:%M")
+    open_time_obj = datetime.strptime(open_time['0'], "%H:%M")
+    close_time_obj = datetime.strptime(close_time['0'], "%H:%M")
     break_start_time_obj = datetime.strptime(break_start_time, "%H:%M")
     break_end_time_obj = datetime.strptime(break_end_time, "%H:%M")
 
@@ -395,7 +393,7 @@ def generate_realistic_data():
         'google-oauth2|1': [450, 1200],
         'google-oauth2|2': [450, 1200],
         'google-oauth2|3': [450, 1200],
-        'google-oauth2|4': [450, 1200],
+        'auth0|6723f8381a769e4773c771d8': [450, 1200],
         'google-oauth2|5': [450, 1200],
         'google-oauth2|6': [450, 1200],
         'google-oauth2|7': [450, 1200],
@@ -417,6 +415,7 @@ def generate_realistic_data():
         shift_start = open_time + start_hour * 60
         shift_end = shift_start + shift_length * 60
         lunch_break_start, lunch_break_end = get_random_time_slot(break_start_time, break_end_time, break_duration)
+        print(nurse_data, nurse['nurseId'])
         nurses.append({
             'id': nurse['id'],
             'nurseId': nurse['nurseId'],  # Use the actual nurseId from MongoDB
