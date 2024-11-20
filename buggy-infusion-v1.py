@@ -1,7 +1,13 @@
 import math
 import pulp
-# from graphics_matplotlib import *
-from settings import *
+import json
+from pathlib import Path
+import numpy as np
+import random
+
+# Directory containing the JSON files
+data_dir = Path("generated_data")
+
 
 def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time, close_time, M, nurses_mongo):
     # Define the problem
@@ -95,7 +101,6 @@ def schedule_patients_no_set_lunch(patients, num_stations, num_nurses, open_time
     else:
         return None
 
-
 def calculate_roi_metrics(allocation, patients, nurses):
     # hint : we have to use allocation as that is the scheduling done by the algorithm
     overtime_per_nurse = []
@@ -126,37 +131,51 @@ def calculate_roi_metrics(allocation, patients, nurses):
 
     return metrics
 
+def load_from_json(filename):
+    """
+    Load data from a JSON file.
+    """
+    filepath = data_dir / filename
+    with open(filepath, "r") as file:
+        data = json.load(file)
+    return data
+
+def main():
+    """
+    Main function to load data from JSON files and process it.
+    """
+    print("Loading data from JSON files...")
+
+    # Load data from JSON files
+    patients = load_from_json("patients.json")
+    nurses = load_from_json("nurses.json")
+    schedule_data = load_from_json("schedule.json")
+
+    # Extract details from the schedule_data
+    num_nurses = schedule_data["num_nurses"]
+    num_chairs = schedule_data["num_chairs"]
+    M = schedule_data["max_patients_per_nurse"]
+    open_time = schedule_data["open_time"]
+    close_time = schedule_data["close_time"]
+    break_start_time = schedule_data["break_start_time"]
+    break_end_time = schedule_data["break_end_time"]
+    break_duration = schedule_data["break_duration"]
+    active_chairs = schedule_data["active_chairs"]
+
+    print("Data loaded successfully.")
+
+    allocation = schedule_patients_no_set_lunch(patients, num_chairs, num_nurses, open_time, close_time, M, nurses)
 
 
-# Example usage
-num_nurses, num_chairs, M, open_time, close_time, patients, nurses, break_start_time, break_end_time, break_duration, chairs = generate_realistic_data()
+    for alloc in allocation:
+        print(f"Patient {alloc[0]} starts at {alloc[1]} and ends at {alloc[2]} in chair {alloc[3]} with nurse {alloc[4]}")
 
-naive_allocation = generate_naive_allocation(patients, nurses, num_chairs, open_time, close_time)
+    print("ROI FROM OPTIMIZED SCHEDULE")
+    optimized_roi = calculate_roi_metrics(
+        allocation, patients, nurses)
 
-allocation = schedule_patients_no_set_lunch(
-    patients, num_chairs, num_nurses, open_time, close_time, M, nurses
-)
+    print(optimized_roi)
 
-for alloc in allocation:
-    print(f"Patient {alloc[0]} starts at {alloc[1]} and ends at {alloc[2]} in chair {alloc[3]} with nurse {alloc[4]}")
 
-# plot_timeline(allocation, open_time, close_time)
-# plot_utilization(allocation, open_time, close_time, num_chairs)
-
-# plot_nurse_timelines(allocation, num_nurses, open_time, close_time)
-# plot_chair_timelines(allocation, num_chairs, open_time, close_time)
-# audit_allocation(allocation, patients, num_chairs, num_nurses, open_time, close_time)
-# audit_allocation(naive_allocation, patients, num_chairs, num_nurses, open_time, close_time)
-
-print("ROI FROM OPTIMIZED SCHEDULE")
-optimized_roi = calculate_roi_metrics(
-    allocation, patients, nurses)
-
-print(optimized_roi)
-
-print("ROI FROM NAIVE SCHEDULE")
-unoptimized_roi = calculate_roi_metrics(
-    naive_allocation, patients, nurses
-)
-
-print(unoptimized_roi)
+if __name__ == "__main__":
+    main()

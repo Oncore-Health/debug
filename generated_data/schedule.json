@@ -1,0 +1,747 @@
+{
+    "num_nurses": 16,
+    "num_chairs": 49,
+    "max_patients_per_nurse": 4,
+    "open_time": 480,
+    "close_time": 1170,
+    "break_start_time": 660,
+    "break_end_time": 810,
+    "break_duration": 30,
+    "active_chairs": [
+        {
+            "id": "1",
+            "name": "424A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "2",
+            "name": "424B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "3",
+            "name": "425B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "4",
+            "name": "425A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "5",
+            "name": "426",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "6",
+            "name": "427",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "7",
+            "name": "429",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "8",
+            "name": "430",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "9",
+            "name": "446",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "10",
+            "name": "445A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "11",
+            "name": "445B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "12",
+            "name": "443A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "13",
+            "name": "443B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "14",
+            "name": "442A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "15",
+            "name": "442B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "16",
+            "name": "441A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "17",
+            "name": "441B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "18",
+            "name": "440A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "19",
+            "name": "440B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "20",
+            "name": "436A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "21",
+            "name": "436B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "22",
+            "name": "436C",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "23",
+            "name": "436D",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "24",
+            "name": "436E",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "25",
+            "name": "436F",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "26",
+            "name": "434A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "27",
+            "name": "434B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "28",
+            "name": "434C",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "29",
+            "name": "433",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "30",
+            "name": "460A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "31",
+            "name": "460B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "32",
+            "name": "4030A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "33",
+            "name": "4030B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "34",
+            "name": "4030C",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "35",
+            "name": "4030D",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "36",
+            "name": "422",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "37",
+            "name": "410A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "38",
+            "name": "410B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "39",
+            "name": "412",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "40",
+            "name": "413",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "41",
+            "name": "414",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "42",
+            "name": "415",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "43",
+            "name": "416",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "47",
+            "name": "411A",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "48",
+            "name": "411B",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "49",
+            "name": "407",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "50",
+            "name": "408",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "51",
+            "name": "423",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        },
+        {
+            "id": "12b8887a-d579-4da4-b01a-2b7ef88bac9a",
+            "name": "[chair from sk]",
+            "type": {
+                "Bed": true,
+                "Chair": false,
+                "Gurney": false
+            },
+            "status": true,
+            "isolation": {
+                "Public room": true,
+                "Private room with bathroom": false,
+                "Private room without bathroom": false
+            }
+        }
+    ]
+}

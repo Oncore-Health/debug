@@ -1,0 +1,162 @@
+[
+    {
+        "id": 0,
+        "nurseId": "google-oauth2|0",
+        "nurseName": "Casey Brown",
+        "nurseEmail": "casey.brown@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 690,
+        "lunchBreakEnd": 720
+    },
+    {
+        "id": 1,
+        "nurseId": "google-oauth2|1",
+        "nurseName": "Sydni Christofferson",
+        "nurseEmail": "sydni.christofferson@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 740,
+        "lunchBreakEnd": 770
+    },
+    {
+        "id": 2,
+        "nurseId": "google-oauth2|2",
+        "nurseName": "Indeya Fletcher",
+        "nurseEmail": "indeya.fletcher@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 670,
+        "lunchBreakEnd": 700
+    },
+    {
+        "id": 3,
+        "nurseId": "google-oauth2|3",
+        "nurseName": "Alexandra Kapuya",
+        "nurseEmail": "alexandra.kapuya@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 710,
+        "lunchBreakEnd": 740
+    },
+    {
+        "id": 4,
+        "nurseId": "auth0|6723f8381a769e4773c771d8",
+        "nurseName": "Olivia Kelly",
+        "nurseEmail": "olivia.kelly@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 750,
+        "lunchBreakEnd": 780
+    },
+    {
+        "id": 5,
+        "nurseId": "google-oauth2|5",
+        "nurseName": "Rebekah Lieu",
+        "nurseEmail": "rebekah.lieu@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 690,
+        "lunchBreakEnd": 720
+    },
+    {
+        "id": 6,
+        "nurseId": "google-oauth2|6",
+        "nurseName": "Jennifer Metz",
+        "nurseEmail": "jennifer.metz@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 680,
+        "lunchBreakEnd": 710
+    },
+    {
+        "id": 7,
+        "nurseId": "google-oauth2|7",
+        "nurseName": "Kathy Pham",
+        "nurseEmail": "kathy.pham@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 670,
+        "lunchBreakEnd": 700
+    },
+    {
+        "id": 8,
+        "nurseId": "google-oauth2|8",
+        "nurseName": "Samantha Ranjo",
+        "nurseEmail": "samantha.ranjo@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 700,
+        "lunchBreakEnd": 730
+    },
+    {
+        "id": 9,
+        "nurseId": "google-oauth2|9",
+        "nurseName": "Danielle Reid",
+        "nurseEmail": "danielle.reid@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 770,
+        "lunchBreakEnd": 800
+    },
+    {
+        "id": 10,
+        "nurseId": "google-oauth2|101311321465229661693",
+        "nurseName": "Maggie Yetter",
+        "nurseEmail": "maggie.yetter@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1200,
+        "lunchBreakStart": 730,
+        "lunchBreakEnd": 760
+    },
+    {
+        "id": 11,
+        "nurseId": "google-oauth2|112343536148519048621",
+        "nurseName": "Dorothy Cuason",
+        "nurseEmail": "dorothy.cuason@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1080,
+        "lunchBreakStart": 710,
+        "lunchBreakEnd": 740
+    },
+    {
+        "id": 12,
+        "nurseId": "google-oauth2|12",
+        "nurseName": "Selena Robillard",
+        "nurseEmail": "selena.robillard@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1080,
+        "lunchBreakStart": 750,
+        "lunchBreakEnd": 780
+    },
+    {
+        "id": 13,
+        "nurseId": "google-oauth2|13",
+        "nurseName": "Samantha Wicker",
+        "nurseEmail": "samantha.wicker@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1080,
+        "lunchBreakStart": 720,
+        "lunchBreakEnd": 750
+    },
+    {
+        "id": 14,
+        "nurseId": "google-oauth2|14",
+        "nurseName": "Megan Boeshaar",
+        "nurseEmail": "megan.boeshaar@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 1080,
+        "lunchBreakStart": 770,
+        "lunchBreakEnd": 800
+    },
+    {
+        "id": 15,
+        "nurseId": "google-oauth2|15",
+        "nurseName": "Vanessa Duarte",
+        "nurseEmail": "Vanessa.duarte@chla.usc.edu",
+        "startTime": 450,
+        "endTime": 960,
+        "lunchBreakStart": 690,
+        "lunchBreakEnd": 720
+    }
+]
